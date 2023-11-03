@@ -1,25 +1,34 @@
 {
-    "name": "alisalehi/laravel-translate-lang-files",
-    "description": "easiest way to translate lang files to another language in laravel!",
+    "name": "alisalehi/laravel-translator-lang-files",
+    "description": "easiest way to translate lang files to another language in laravel",
     "keywords": [
-        "laravel translate lang files"
+        "laravel translator lang files",
+        "translator lang files",
+        "larave",
+        "alisalehi"
     ],
-    "homepage": "",
+    "homepage": "https://github.com/alisalehi1380/laravel-translator-lang-files",
     "license": "MIT",
     "authors": [
         {
             "name": ":Ali Salehi",
-            "email": "alisalehi13800930@gmail.com",
-            "role": "Developer"
+            "email": "alisalehi13800930@gmail.com"
         }
     ],
     "require": {
-        "php": "^7.1.3|8.*",
-		"laravel/framework":"8.*|9.*|10.*"
-		},
+        "php": "^8.*",
+        "laravel/framework": "8.*|9.*|10.*"
+    },
     "autoload": {
         "psr-4": {
-            "Alisalehi\\...\\": "src"
+            "Alisalehi\\LaravelTranslatorLangFiles\\": "src"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Alisalehi\\LaravelTranslatorLangFiles\\LaravelTranslatorLangFilesServiceProvider"
+            ]
         }
     }
 }
