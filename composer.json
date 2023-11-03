@@ -3,9 +3,7 @@
     "description": "easiest way to translate lang files to another language in laravel",
     "keywords": [
         "laravel translator lang files",
-        "translator lang files",
-        "larave",
-        "alisalehi"
+        "translator lang files"
     ],
     "homepage": "https://github.com/alisalehi1380/laravel-translator-lang-files",
     "license": "MIT",
@@ -16,8 +14,12 @@
         }
     ],
     "require": {
-        "php": "^8.*",
-        "laravel/framework": "8.*|9.*|10.*"
+        "php": ">=8.0",
+        "guzzlehttp/guzzle": "^7.0",
+        "ext-json": "*",
+        "ext-mbstring": "*",
+        "illuminate/contracts": "9.*|10.*",
+        "stichoza/google-translate-php": "^5.1"
     },
     "autoload": {
         "psr-4": {
