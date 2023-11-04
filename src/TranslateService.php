@@ -1,8 +1,7 @@
 <?php
 
-namespace App\Services;
+namespace AliSalehi\LangFilesTranslator;
 
-use Http\Discovery\Exception\NotFoundException;
 use Illuminate\Support\Facades\File;
 use Stichoza\GoogleTranslate\GoogleTranslate;
 use Symfony\Component\Finder\SplFileInfo;
@@ -12,11 +11,20 @@ class TranslateService
     private string $translate_from;
     private string $translate_to;
     
-    public function __construct(string $from, string $to)
+    //setter
+    public function From(string $from): TranslateService
     {
         $this->translate_from = $from;
-        $this->translate_to = $to;
+        return $this;
     }
+    
+    //setter
+    public function to(string $to): TranslateService
+    {
+        $this->translate_to = $to;
+        return $this;
+    }
+    
     
     public function translate()
     {
@@ -27,14 +35,13 @@ class TranslateService
         echo "translated files are ready. \n Enjoy it!";
     }
     
-    private function getLocalLangFiles(): array
+    private function getLocalLangFiles(): array|\Exception
     {
-        try {
-            $langPath = lang_path(DIRECTORY_SEPARATOR . $this->translate_from);
+        $langPath = lang_path(DIRECTORY_SEPARATOR . $this->translate_from);
+        if (File::isDirectory($langPath)) {
             return File::files($langPath);
-        }catch (NotFoundException $e){
-            throw new NotFoundException("lang folder `$this->translate_from` not Exist!" , 0 , $e);
         }
+        throw new \Exception("lang folder `$this->translate_from` not Exist!");
     }
     
     private function filePutContent(string $translatedData, string $file): void
@@ -73,13 +80,16 @@ class TranslateService
         $google = $this->setUpGoogleTranslate();
         
         $trans_data = [];
-        foreach ($content as $first_key => $first_value) {
-            if (is_array($first_value)) {
-                foreach ($first_value as $second_key => $second_value) {
-                    $trans_data[$first_key][$second_key] = $google->translate($second_value);
+        
+        if (!empty($content)) {
+            foreach ($content as $first_key => $first_value) {
+                if (is_array($first_value)) {
+                    foreach ($first_value as $second_key => $second_value) {
+                        $trans_data[$first_key][$second_key] = $google->translate($second_value);
+                    }
+                } else {
+                    $trans_data[$first_key] = $google->translate($first_value);
                 }
-            } else {
-                $trans_data[$first_key] = $google->translate($first_value);
             }
         }
         
