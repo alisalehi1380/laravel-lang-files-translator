@@ -20,13 +20,13 @@
   },
   "autoload": {
     "psr-4": {
-      "Alisalehi\\LangFilesTranslator\\": "src"
+      "AliSalehi\\LangFilesTranslator\\": "src"
     }
   },
   "extra": {
     "laravel": {
       "providers": [
-        "Alisalehi\\LangFilesTranslator\\LangFilesTranslatorServiceProvider"
+        "AliSalehi\\LangFilesTranslator\\LangFilesTranslatorServiceProvider"
       ]
     }
   },
