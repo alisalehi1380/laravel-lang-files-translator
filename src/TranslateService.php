@@ -11,37 +11,36 @@ class TranslateService
     private string $translate_from;
     private string $translate_to;
     
-    //setter
+    //setters
     public function From(string $from): TranslateService
     {
         $this->translate_from = $from;
         return $this;
     }
     
-    //setter
     public function to(string $to): TranslateService
     {
         $this->translate_to = $to;
         return $this;
     }
     
-    
     public function translate()
     {
-        foreach ($this->getLocalLangFiles() as $file) {
+        $files = $this->getLocalLangFiles();
+        
+        foreach ($files as $file) {
             $this->filePutContent($this->getTranslatedData($file), $file);
         }
         
         echo "translated files are ready. \n Enjoy it!";
     }
     
-    private function getLocalLangFiles(): array|\Exception
+    private function getLocalLangFiles(): array
     {
-        $langPath = lang_path(DIRECTORY_SEPARATOR . $this->translate_from);
-        if (File::isDirectory($langPath)) {
-            return File::files($langPath);
-        }
-        throw new \Exception("lang folder `$this->translate_from` not Exist!");
+        $this->existsLocalLangDir();
+        $this->existsLocalLangFiles();
+        
+        return $this->getFiles($this->getTranslateLocalPath());
     }
     
     private function filePutContent(string $translatedData, string $file): void
@@ -61,11 +60,6 @@ class TranslateService
     {
         $translatedData = var_export($this->translateLangFiles(include $file), "false");
         return $this->addPhpSyntax($translatedData);
-    }
-    
-    private function addPhpSyntax(string $translatedData): string
-    {
-        return '<?php return ' . $translatedData . ';';
     }
     
     private function setUpGoogleTranslate(): GoogleTranslate
@@ -94,5 +88,36 @@ class TranslateService
         }
         
         return $trans_data;
+    }
+    
+    private function addPhpSyntax(string $translatedData): string
+    {
+        return '<?php return ' . $translatedData . ';';
+    }
+    
+    // Exceptions
+    private function existsLocalLangDir(): void
+    {
+        $path = $this->getTranslateLocalPath();
+        
+        throw_if(!File::isDirectory($path), ("lang folder '$this->translate_from' not Exist !"));
+    }
+    
+    private function existsLocalLangFiles(): void
+    {
+        $files = $this->getFiles($this->getTranslateLocalPath());
+        
+        throw_if(empty($files), ("lang files in '$this->translate_from' folder not found !"));
+    }
+    
+    //helpers
+    private function getFiles(string $path = null): array
+    {
+        return File::files($path);
+    }
+    
+    private function getTranslateLocalPath(): string
+    {
+        return lang_path(DIRECTORY_SEPARATOR . $this->translate_from);
     }
 }
