@@ -23,5 +23,5 @@
       "AliSalehi\\LangFilesTranslator\\": "src/"
     }
   },
-  "minimum-stability": "beta"
+  "minimum-stability": "stable"
 }
