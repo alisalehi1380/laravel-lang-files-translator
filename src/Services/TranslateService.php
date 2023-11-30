@@ -1,6 +1,6 @@
 <?php
 
-namespace AliSalehi\LangFilesTranslator;
+namespace AliSalehi\LangFilesTranslator\Services;
 
 use Illuminate\Support\Facades\File;
 use Stichoza\GoogleTranslate\GoogleTranslate;
@@ -12,7 +12,7 @@ class TranslateService
     private string $translate_to;
     
     //setters
-    public function From(string $from): TranslateService
+    public function from(string $from): TranslateService
     {
         $this->translate_from = $from;
         return $this;
@@ -24,15 +24,13 @@ class TranslateService
         return $this;
     }
     
-    public function translate()
+    public function translate() : void
     {
         $files = $this->getLocalLangFiles();
         
         foreach ($files as $file) {
             $this->filePutContent($this->getTranslatedData($file), $file);
         }
-        
-        echo "translated files are ready. \n Enjoy it!";
     }
     
     private function getLocalLangFiles(): array

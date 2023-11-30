@@ -2,21 +2,19 @@
 
 namespace Alisalehi\LangFilesTranslator;
 
-use Illuminate\Foundation\AliasLoader;
+use AliSalehi\LangFilesTranslator\Commands\Translate;
 use Illuminate\Support\ServiceProvider;
 
 class LangFilesTranslatorServiceProvider extends ServiceProvider
 {
+    private static array $commandNames = [
+        Translate::class
+    ];
+    
     public function boot()
     {
-        $loader = AliasLoader::getInstance();
-        $loader->alias('langTranslator', LangTranslatorFacade::class);
-    }
-    
-    public function register()
-    {
-        $this->app->singleton('translateLangFiles', function () {
-            return new TranslateService();
-        });
+        if ($this->app->runningInConsole()) {
+            $this->commands(self::$commandNames);
+        }
     }
 }
