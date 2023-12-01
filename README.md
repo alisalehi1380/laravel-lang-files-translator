@@ -1,6 +1,6 @@
 # Laravel Lang Files Translator
 
-![laravel_traslator-lang-files.jpeg](..%2Flaravel_traslator-lang-files.jpeg)
+![Laravel Lang Files Translator](https://banners.beyondco.de/laravel-lang-files-translator%20.png?theme=dark&packageManager=composer+require&packageName=alisalehi%2Flaravel-lang-files-translator&pattern=fourPointStars&style=style_1&description=Easiest+way+to+translate+lang+files&md=1&showWatermark=0&fontSize=100px&images=translate)
 [![Latest Stable Version](http://poser.pugx.org/alisalehi/laravel-lang-files-translator/v)](https://packagist.org/packages/alisalehi/laravel-lang-files-translator)
 [![Total Downloads](http://poser.pugx.org/alisalehi/laravel-lang-files-translator/downloads)](https://packagist.org/packages/alisalehi/laravel-lang-files-translator)
 [![License](http://poser.pugx.org/alisalehi/laravel-lang-files-translator/license)](https://packagist.org/packages/alisalehi/laravel-lang-files-translator)
