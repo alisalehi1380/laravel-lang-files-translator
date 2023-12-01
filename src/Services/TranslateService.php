@@ -1,6 +1,6 @@
 <?php
 
-namespace AliSalehi\LaravelLangFilesTranslator\Services;
+namespace Alisalehi\LaravelLangFilesTranslator\Services;
 
 use Illuminate\Support\Facades\File;
 use Stichoza\GoogleTranslate\GoogleTranslate;

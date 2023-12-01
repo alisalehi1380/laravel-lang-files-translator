@@ -1,6 +1,6 @@
 <?php
 
-namespace AliSalehi\LaravelLangFilesTranslator\Commands;
+namespace Alisalehi\LaravelLangFilesTranslator\Commands;
 
 use AliSalehi\LangFilesTranslator\Services\TranslateService;
 use Illuminate\Console\Command;

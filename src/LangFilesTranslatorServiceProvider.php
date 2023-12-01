@@ -2,7 +2,7 @@
 
 namespace Alisalehi\LaravelLangFilesTranslator;
 
-use AliSalehi\LaravelLangFilesTranslator\Commands\Translate;
+use Alisalehi\LaravelLangFilesTranslator\Commands\Translate;
 use Illuminate\Support\ServiceProvider;
 
 class LangFilesTranslatorServiceProvider extends ServiceProvider
