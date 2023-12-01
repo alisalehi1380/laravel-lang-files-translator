@@ -1,8 +1,8 @@
 <?php
 
-namespace Alisalehi\LangFilesTranslator;
+namespace Alisalehi\LaravelLangFilesTranslator;
 
-use AliSalehi\LangFilesTranslator\Commands\Translate;
+use AliSalehi\LaravelLangFilesTranslator\Commands\Translate;
 use Illuminate\Support\ServiceProvider;
 
 class LangFilesTranslatorServiceProvider extends ServiceProvider
@@ -11,7 +11,12 @@ class LangFilesTranslatorServiceProvider extends ServiceProvider
         Translate::class
     ];
     
-    public function boot()
+    public function register(): void
+    {
+    
+    }
+    
+    public function boot(): void
     {
         if ($this->app->runningInConsole()) {
             $this->commands(self::$commandNames);

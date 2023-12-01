@@ -20,7 +20,14 @@
   },
   "autoload": {
     "psr-4": {
-      "AliSalehi\\LangFilesTranslator\\": "src/"
+      "AliSalehi\\LaravelLangFilesTranslator\\": "src/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Alisalehi\\LaravelLangFilesTranslator\\LaravelLangFilesTranslatorServiceProvider"
+      ]
     }
   },
   "require-dev": {
