@@ -31,4 +31,4 @@ First, you use trait in model.
 This project exists thanks to all the people who
 contribute. [CONTRIBUTING](https://github.com/alisalehi/laravel-lang-files-translator/graphs/contributors)
 
-<a href="https://github.com/alisalehi/laravel-lang-files-translator/graphs/contributors"><img src="https://opencollective.com/laravel-lang-files-translator/contributors.svg?width=890&button=false" /></a>
+![laravel-lang-files-translator](https://github.com/alisalehi1380/laravel-lang-files-translator/assets/111766206/2ce1256a-781a-424f-8f8c-79ae5aaae170)
