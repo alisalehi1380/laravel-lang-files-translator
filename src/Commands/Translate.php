@@ -2,12 +2,12 @@
 
 namespace Alisalehi\LaravelLangFilesTranslator\Commands;
 
-use AliSalehi\LangFilesTranslator\Services\TranslateService;
+use AliSalehi\LaravelLangFilesTranslator\Services\TranslateService;
 use Illuminate\Console\Command;
 
 class Translate extends Command
 {
-    protected $signature = 'view:lang {-h|--help : translate lang files} {from} {to}';
+    protected $signature = 'translate:lang {from : translate from language} {to : translate to language}';
     
     protected $description = 'translate lang files';
     
