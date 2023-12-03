@@ -34,4 +34,4 @@ contribute. [CONTRIBUTING](https://github.com/alisalehi/laravel-lang-files-trans
 ![laravel-lang-files-translator](https://github.com/alisalehi1380/laravel-lang-files-translator/assets/111766206/2ce1256a-781a-424f-8f8c-79ae5aaae170)
 
 ## License
-The MIT License (MIT). See **[License File]([https://github.com/alisalehi1380/laravel-lang-files-translator/blob/master/LICENSE])** for more information.
+The MIT License (MIT). See **[License File](https://github.com/alisalehi1380/laravel-lang-files-translator/blob/master/LICENSE)** for more information.
