@@ -6,7 +6,7 @@
 [![License](http://poser.pugx.org/alisalehi/laravel-lang-files-translator/license)](https://packagist.org/packages/alisalehi/laravel-lang-files-translator)
 [![PHP Version Require](http://poser.pugx.org/alisalehi/laravel-lang-files-translator/require/php)](https://packagist.org/packages/alisalehi/laravel-lang-files-translator)
 ***
-Laravel lang files translator is a package for Easiest way to translate lang files to other languages in PHP format in laravel. <br>
+Laravel lang files translator is a package for the Easiest way to translate lang files to other languages in PHP format in Laravel. <br>
 
 # Requirements
 ***
@@ -22,10 +22,16 @@ composer require alisalehi/laravel-lang-files-translator
 ```
 
 # Usage
-First, you use trait in model.
 ```
-
+php artisan translate:lang {from} {to}
 ```
+for example, your locale is English and you have en lang files and want to have these files to Persian(fa) lang too.
+just enough to run:
+```
+php artisan translate:lang en fa
+```
+and done!
+Go to lang/fa and you will see all the translated files from the en folder.
 
 ## Contributing
 This project exists thanks to all the people who
