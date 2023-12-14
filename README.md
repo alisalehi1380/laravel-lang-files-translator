@@ -38,7 +38,7 @@ php artisan translate:lang en fa
 and done!
 Go to lang/fa and you will see all the translated files from the en folder.
 
-## 🙋Contributing
+## 🙋‍♂️Contributing
 ![laravel-lang-files-translator](https://github.com/alisalehi1380/laravel-lang-files-translator/assets/111766206/a43389af-2f2e-4f29-8993-0609b94abbe8)
 
 As Einstein said, **"There's a way to do it better!"** So I welcome any change that makes the code better, more readable, and testable. (Even renaming a variable!) 
