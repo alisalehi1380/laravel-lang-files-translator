@@ -24,7 +24,7 @@ class TranslateService
         return $this;
     }
     
-    public function translate() : void
+    public function translate(): void
     {
         $files = $this->getLocalLangFiles();
         
@@ -77,7 +77,13 @@ class TranslateService
             foreach ($content as $first_key => $first_value) {
                 if (is_array($first_value)) {
                     foreach ($first_value as $second_key => $second_value) {
-                        $trans_data[$first_key][$second_key] = $google->translate($second_value);
+                        if (is_array($second_value)) {
+                            foreach ($second_value as $key => $value) {
+                                $trans_data[$first_key][$second_key][$key] = $google->translate($value);
+                            }
+                        } else {
+                            $trans_data[$first_key][$second_key] = $google->translate($second_value);
+                        }
                     }
                 } else {
                     $trans_data[$first_key] = $google->translate($first_value);
