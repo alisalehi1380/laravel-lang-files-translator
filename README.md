@@ -38,6 +38,11 @@ php artisan translate:lang en fa
 and done!
 Go to lang/fa and you will see all the translated files from the en folder.
 
+how to use video ⤵️
+
+<img src="https://github.com/alisalehi1380/laravel-lang-files-translator/assets/111766206/9fdb0342-a045-4a3d-8b76-51c848dce2ec" width="700px" height="auto" />
+
+
 ## 🙋‍♂️Contributing
 ![laravel-lang-files-translator](https://github.com/alisalehi1380/laravel-lang-files-translator/assets/111766206/a43389af-2f2e-4f29-8993-0609b94abbe8)
 
