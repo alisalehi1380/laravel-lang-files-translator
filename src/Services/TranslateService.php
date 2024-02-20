@@ -71,23 +71,20 @@ class TranslateService
     {
         $google = $this->setUpGoogleTranslate();
         
+        if (!empty($content)) {
+            return $this->translateRecursive($content, $google);
+        }
+    }
+    
+    private function translateRecursive($content, $google) : array
+    {
         $trans_data = [];
         
-        if (!empty($content)) {
-            foreach ($content as $first_key => $first_value) {
-                if (is_array($first_value)) {
-                    foreach ($first_value as $second_key => $second_value) {
-                        if (is_array($second_value)) {
-                            foreach ($second_value as $key => $value) {
-                                $trans_data[$first_key][$second_key][$key] = $google->translate($value);
-                            }
-                        } else {
-                            $trans_data[$first_key][$second_key] = $google->translate($second_value);
-                        }
-                    }
-                } else {
-                    $trans_data[$first_key] = $google->translate($first_value);
-                }
+        foreach ($content as $key => $value) {
+            if (!is_array($value)) {
+                $trans_data[$key] = $google->translate($value);
+            } else {
+                $trans_data[$key] = $this->translateRecursive($value, $google);
             }
         }
         
