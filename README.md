@@ -35,6 +35,12 @@ just enough to run:
 ```
 php artisan translate:lang en fa
 ```
+
+prefix option :
+```
+php artisan translate:lang en fa --prefix="path/file"
+```
+
 and done!
 Go to lang/fa and you will see all the translated files from the en folder.
 
