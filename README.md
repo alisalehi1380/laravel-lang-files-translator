@@ -18,7 +18,7 @@ Do you not have the possibility to use the JSON format that many Laravel languag
 
 - `PHP: >=8.0`
 - `stichoza/google-translate-php: ^5.1`
-- `Laravel Framework: 9.*|10.*`
+- `Laravel Framework: 9.*|10.*|11.*`
 
 # Installation
 ***
