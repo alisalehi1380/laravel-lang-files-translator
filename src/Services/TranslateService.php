@@ -101,7 +101,10 @@ class TranslateService
     {
         $path = $this->getTranslateLocalPath();
         
-        throw_if(!File::isDirectory($path), ("lang folder '$this->translate_from' not Exist !"));
+        throw_if(
+            !File::isDirectory($path),
+            ("lang folder $this->translate_from not Exist !" . PHP_EOL . '  Have you run `php artisan lang:publish` command before?')
+        );
     }
     
     private function existsLocalLangFiles(): void
