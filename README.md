@@ -59,8 +59,8 @@ contribute. [CONTRIBUTING](https://github.com/alisalehi/laravel-lang-files-trans
 
 
 [img-package]: https://banners.beyondco.de/laravel-lang-files-translator%20.png?theme=dark&packageManager=composer+require&packageName=alisalehi%2Flaravel-lang-files-translator&pattern=fourPointStars&style=style_1&description=Easiest+way+to+translate+lang+files&md=1&showWatermark=0&fontSize=100px&images=translate
-[ico-laravel]: https://img.shields.io/badge/Laravel-≥%208.0-ff2d20?style=&logo=laravel
-[ico-php]: https://img.shields.io/badge/php-≥%208.0-7b7eb1?style=&logo=php
+[ico-laravel]: https://img.shields.io/packagist/dependency-v/alisalehi/laravel-lang-files-translator/laravel/framework.svg?color=red
+[ico-php]: https://img.shields.io/packagist/dependency-v/alisalehi/laravel-lang-files-translator/php.svg?
 [link-packagist]: https://packagist.org/packages/alisalehi/laravel-lang-files-translator
 [ico-license]: http://poser.pugx.org/alisalehi/laravel-lang-files-translator/license
 [ico-downloads]: http://poser.pugx.org/alisalehi/laravel-lang-files-translator/downloads
