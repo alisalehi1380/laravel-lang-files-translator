@@ -8,7 +8,7 @@
 ***
 Laravel lang files translator is a package for the Easiest way to translate lang files to other languages in PHP format in Laravel. <br>
 
-# problems:
+# Problems solved:
 Did you buy a Laravel script and it doesn't have your language in the`lang`file? </br>
 Do you want to make your web application bilingual, but you don't know how to translate all those words?</br>
 Do you not have the possibility to use the JSON format that many Laravel language translation packages give you?
