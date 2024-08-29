@@ -67,13 +67,14 @@ class TranslateService
             ->setTarget($this->translate_to);
     }
 
-    private function translateLangFiles(array $content): array
+    private function translateLangFiles(array $content): array|null
     {
         $google = $this->setUpGoogleTranslate();
 
         if (!empty($content)) {
             return $this->translateRecursive($content, $google);
         }
+        return null;
     }
 
     private function translateRecursive($content, $google): array
