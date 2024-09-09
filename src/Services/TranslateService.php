@@ -70,10 +70,11 @@ class TranslateService
     private function translateLangFiles(array $content): array
     {
         $google = $this->setUpGoogleTranslate();
-        
-        if (!empty($content)) {
-            return $this->translateRecursive($content, $google);
-        }
+
+        if (empty($content))
+            return [];
+
+        return $this->translateRecursive($content, $google);
     }
     
     private function translateRecursive($content, $google) : array
@@ -81,11 +82,25 @@ class TranslateService
         $trans_data = [];
         
         foreach ($content as $key => $value) {
-            if (!is_array($value)) {
-                $trans_data[$key] = $google->translate($value);
-            } else {
+            if (is_array($value)) {
                 $trans_data[$key] = $this->translateRecursive($value, $google);
+                continue;
             }
+
+            $hasProps = str_contains($value, ':');
+            $modifiedValue = $hasProps
+                ? preg_replace_callback(
+                    '/(:\w+)/',
+                    fn($match) => '{' . $match[0] . '}',
+                    $value
+                )
+                : $value;
+
+            $translatedValue = $google->translate($modifiedValue);
+
+            $trans_data[$key] = $hasProps
+                ? str_replace(['{', '}'], '', $translatedValue)
+                : $translatedValue;
         }
         
         return $trans_data;
