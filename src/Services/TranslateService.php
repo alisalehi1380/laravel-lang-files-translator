@@ -70,10 +70,11 @@ class TranslateService
     private function translateLangFiles(array $content): array
     {
         $google = $this->setUpGoogleTranslate();
-        
-        if (!empty($content)) {
-            return $this->translateRecursive($content, $google);
-        }
+
+        if (empty($content))
+            return [];
+
+        return $this->translateRecursive($content, $google);
     }
     
     private function translateRecursive($content, $google) : array
