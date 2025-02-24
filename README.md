@@ -13,15 +13,8 @@ Did you buy a Laravel script and it doesn't have your language in the`lang`file?
 Do you want to make your web application bilingual, but you don't know how to translate all those words?</br>
 Do you not have the possibility to use the JSON format that many Laravel language translation packages give you?
 
-# Requirements
-***
-
-- `PHP: >=8.0`
-- `stichoza/google-translate-php: ^5.1`
-- `Laravel Framework: 9.*|10.*|11.*`
 
 # Installation
-***
 ```
 composer require alisalehi/laravel-lang-files-translator
 ```
