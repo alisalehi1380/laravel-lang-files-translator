@@ -13,13 +13,20 @@ class LangFilesTranslatorServiceProvider extends ServiceProvider
     
     public function register(): void
     {
-    
+        $this->mergeConfigFrom(
+            __DIR__ . '/../config/lang-files-translator.php',
+            'lang-files-translator'
+        );
     }
     
     public function boot(): void
     {
         if ($this->app->runningInConsole()) {
             $this->commands(self::$commandNames);
+            
+            $this->publishes([
+                __DIR__ . '/../config/lang-files-translator.php' => config_path('lang-files-translator.php'),
+            ], 'lang-files-translator-config');
         }
     }
 }
