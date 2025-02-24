@@ -3,13 +3,16 @@
 namespace Alisalehi\LaravelLangFilesTranslator\Services;
 
 use Illuminate\Support\Facades\File;
-use Stichoza\GoogleTranslate\GoogleTranslate;
+use Alisalehi\LaravelLangFilesTranslator\Contracts\TranslatorInterface;
+use Alisalehi\LaravelLangFilesTranslator\Services\TranslatorFactory;
 use Symfony\Component\Finder\SplFileInfo;
 
 class TranslateService
 {
     private string $translate_from;
     private string $translate_to;
+    private string $provider = 'google';
+    private ?string $model = null;
     
     //setters
     public function from(string $from): TranslateService
@@ -21,6 +24,13 @@ class TranslateService
     public function to(string $to): TranslateService
     {
         $this->translate_to = $to;
+        return $this;
+    }
+
+    public function withProvider(string $provider, ?string $model = null): TranslateService
+    {
+        $this->provider = $provider;
+        $this->model = $model;
         return $this;
     }
     
@@ -60,30 +70,30 @@ class TranslateService
         return $this->addPhpSyntax($translatedData);
     }
     
-    private function setUpGoogleTranslate(): GoogleTranslate
+    private function getTranslator(): TranslatorInterface
     {
-        $google = new GoogleTranslate();
-        return $google->setSource($this->translate_from)
+        return TranslatorFactory::create($this->provider, $this->model)
+            ->setSource($this->translate_from)
             ->setTarget($this->translate_to);
     }
     
     private function translateLangFiles(array $content): array
     {
-        $google = $this->setUpGoogleTranslate();
-
-        if (empty($content))
+        if (empty($content)) {
             return [];
+        }
 
-        return $this->translateRecursive($content, $google);
+        $translator = $this->getTranslator();
+        return $this->translateRecursive($content, $translator);
     }
     
-    private function translateRecursive($content, $google) : array
+    private function translateRecursive($content, TranslatorInterface $translator): array
     {
         $trans_data = [];
         
         foreach ($content as $key => $value) {
             if (is_array($value)) {
-                $trans_data[$key] = $this->translateRecursive($value, $google);
+                $trans_data[$key] = $this->translateRecursive($value, $translator);
                 continue;
             }
 
@@ -96,7 +106,7 @@ class TranslateService
                 )
                 : $value;
 
-            $translatedValue = $google->translate($modifiedValue);
+            $translatedValue = $translator->translate($modifiedValue);
 
             $trans_data[$key] = $hasProps
                 ? str_replace(['{', '}'], '', $translatedValue)
